@@ -28,11 +28,11 @@ if st.button("Generate Recipe"):
             ## Total Time
             ## Beginner Tips
             """
-           try:
-              response = client.models.generate_content(
-                  model="gemini-flash-latest",
-                  contents=prompt
-       )
-       st.markdown(response.text)
-   except Exception as e:
-       st.error(f"DEBUG ERROR: {e}")
+            try:
+                response = client.models.generate_content(
+                    model="gemini-flash-latest",
+                    contents=prompt
+                )
+                st.markdown(response.text)
+            except Exception as e:
+                st.error(f"DEBUG ERROR: {e}")
