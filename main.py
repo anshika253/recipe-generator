@@ -1,16 +1,12 @@
 import streamlit as st
-import google.generativeai as genai
+from google import genai
 
-# Page setup
 st.set_page_config(page_title="AI Recipe Generator", page_icon="🍳")
 st.title("🍳 AI Recipe Generator")
 st.write("Enter a dish name OR a few ingredients you have at home, and get a full recipe!")
 
-# Configure Gemini using the secret key (we'll set this up in Streamlit Cloud)
-genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
-model = genai.GenerativeModel("gemini-flash-latest")
+client = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
 
-# User input
 user_input = st.text_input("Dish name or ingredients:", placeholder="e.g. Paneer Butter Masala OR rice, tomato, onion")
 
 if st.button("Generate Recipe"):
@@ -32,5 +28,8 @@ if st.button("Generate Recipe"):
             ## Total Time
             ## Beginner Tips
             """
-            response = model.generate_content(prompt)
+            response = client.models.generate_content(
+                model="gemini-flash-latest",
+                contents=prompt
+            )
             st.markdown(response.text)
