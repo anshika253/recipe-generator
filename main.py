@@ -8,7 +8,7 @@ st.write("Enter a dish name OR a few ingredients you have at home, and get a ful
 
 # Configure Gemini using the secret key (we'll set this up in Streamlit Cloud)
 genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
-model = genai.GenerativeModel("gemini-1.5-flash")
+model = genai.GenerativeModel("gemini-flash-latest")
 
 # User input
 user_input = st.text_input("Dish name or ingredients:", placeholder="e.g. Paneer Butter Masala OR rice, tomato, onion")
