@@ -30,7 +30,7 @@ if st.button("Generate Recipe"):
             """
             try:
                 response = client.models.generate_content(
-                    model="gemini-flash-latest",
+                    model="gemini-2.5-flash",
                     contents=prompt
                 )
                 st.markdown(response.text)
